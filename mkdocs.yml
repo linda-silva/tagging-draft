@@ -1,0 +1,9 @@
+site_name: Tagging Standards
+nav:
+  - General Tagging: index.md
+  - Azure: azure.md
+  - AWS: aws.md
+  - GitHub: github.md
+  - DataDog: datadog.md
+  - Kubernetes: k8s.md
+theme: readthedocs

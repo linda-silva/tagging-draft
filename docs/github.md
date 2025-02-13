@@ -1,40 +1,44 @@
 # GitHub Enterprise Tagging Standards
 
 ## Overview
-Tagging in GitHub Enterprise is used to categorize and manage repositories, issues, pull requests, and workflows. While GitHub does not have a native tagging system for repositories, organizations can use labels, topics, and metadata to apply consistent tags across projects.
+Tagging in GitHub Enterprise is used to categorize and manage teams within the organization. While GitHub does not have a native tagging system for repositories, we can apply structured tags at the Team level using the description field.
 
-This doc focuses on resource tagging at the repository and organization level.
-This doc does not cover version, Pull Request or issue-level tagging as those are outside the scope of this discussion.
+This doc does not cover tagging for versions, pull requests, issues or repositories as those are outside the scope of this discussion.
 
 ## Tagging Limitations in GitHub
-- **Repository Topics**:
-  - Each repository can have up to **20 topics** for categorization.
-  - Each topic can have up to **50 characters**
-  - Characters are limited to lowercase alphanumeric and -
 - **Team Descriptions**:
-  - Team descriptions can include structured tags
   - Maxium length of **255 characters**
+  - Support plain text only (no structured metadata like JSON or Markdown)
+  - No built-in search functionality for descriptions in the GitHub UI (requires API queries)
 
 ## Standardized Tagging Format
 To ensure uniformity, GitHub Enterprise tagging should follow a structured naming convention prefixed with `TS1` (Tagging Standard 1).
 
-### **Repository Topics**
-Use standardized topics to classify repositories:
-- `TS1-product-name`
-- `TS1-service-type`
-- `TS1-team-name`
+### Team-Level Tagging
+
+Teams can include structured tags within their description field using a comma-separated format:
 
 Example:
 ```text
 TS1-DevOps, TS1-Microservices, TS1-Internal-Tool
 ```
 
-## Tagging Best Practices
-1. **Apply Consistently**: Ensure all repositories, issues, and workflows follow the naming conventions.
-2. **Automate with GitHub Actions**: Use automated workflows to enforce tagging rules.
-3. **Limit the Number of Tags**: Use only meaningful tags to prevent clutter.
-4. **Review Periodically**: Regularly audit and update tags to align with project changes.
-5. **Leverage GitHub Topics for Discoverability**: Ensure repositories use relevant topics for better organization.
+### **Required Tags**
+| Tag Key          | Example Value       | Description                                   |
+|------------------|--------------------|-----------------------------------------------|
+| TS1-product     | ABCPlatform         | Associates the team with a specific product. |
+| TS1-service     | DevOps              | Specifies the team's function or service.    |
+| TS1-region      | US-East-1           | Indicates the region of operations.          |
+| TS1-compliance  | SOC2                | Identifies compliance frameworks followed.   |
+| TS1-owner       | Engineering         | Specifies the department responsible.        |
 
-By following these standards, teams can improve visibility, streamline workflows, and enhance repository organization within GitHub Enterprise.
+## Tagging Best Practices
+1. **Apply Consistently**: Ensure all team descriptions follow the naming conventions.
+2. **Keep Descriptions Concise**: Stay within the 255-character limit while maintaining clarity.
+3. **Automate with the GitHub API**: Use scripts to extract, audit, and enforce tagging.
+4. **Review Periodically**: Conduct regular audits to ensure tags remain relevant.
+5. **Avoid Over-Tagging**: Use only essential tags to prevent complexity.
+
+By following these standards, teams can improve visibility, streamline organizational structures, and enhance tracking within GitHub Enterprise.
+
 

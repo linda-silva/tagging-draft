@@ -14,7 +14,7 @@ Tagging helps with:
 - **Security & Compliance**: Ensuring resources adhere to governance policies.
 
 ### Tagging Limitations and Standardization
-We currently use tagging across multiple technologies to standardize resource identification and facilitate efficient management. Each technology may have different tagging capabilities, but Tags will look similar across different technologies as we aim to maintain consistency.
+We currently use tagging across multiple technologies to standardize resource identification and facilitate efficient management. Each technology may have different tagging capabilities, but tags will look similar across different technologies as we aim to maintain consistency.
 
 To ensure compatibility across all resources, our tagging standard follows the **most restrictive limitation** of each platform.
 
@@ -35,15 +35,15 @@ As defined in this document, there will be required and optional tags for each s
 All tagging should be treated as if enforcement is in place through utilities as this will eventually become the case.
 
 ### Naming Standards
-Tags must follow a structured naming convention to ensure uniformity across different platforms. As much as possible, tag names should be similar across technologies.
+Tags must follow a structured naming convention to ensure uniformity across different platforms. As much as possible, tag names should be similar across technologies. This makes it easier to search and understand tags across platforms.
 
-Each tag will have a **preface** using the format XX# to ensure consistency.
+Each tagging key will have the preface **`ts`** which stands for **tagging-standard**.
 
-Example: `TS1` (Tagging Standard 1)  
+Examples:
 ```
-TS1-Environment: Production
-TS1-Owner: DevOps Team
-TS1-CostCenter: 12345
+ts-key: value
+ts-environment: production
+ts-azure-region: uk-south
 ```
 
 ## Tagging Standards by Technology

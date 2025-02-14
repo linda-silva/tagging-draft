@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Tagging Standards</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "General Tagging";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> Tagging Standards
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">General Tagging</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-tagging">What is Tagging?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#why-we-tag">Why We Tag</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tagging-limitations-and-standardization">Tagging Limitations and Standardization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#general-tagging-constraints">General Tagging Constraints</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#enforcement">Enforcement</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#naming-standards">Naming Standards</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tagging-standards-by-technology">Tagging Standards by Technology</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#azure-tagging-standards">Azure Tagging Standards</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#aws-tagging-standards">AWS Tagging Standards</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#github-tagging-standards">GitHub Tagging Standards</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datadog-tagging-standards">DataDog Tagging Standards</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-tagging-standards">Kubernetes Tagging Standards</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="azure/">Azure</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="aws/">AWS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="github/">GitHub</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="datadog/">DataDog</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="k8s/">Kubernetes</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Tagging Standards</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">General Tagging</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="general-tagging">General Tagging</h1>
+<h2 id="overview">Overview</h2>
+<h3 id="what-is-tagging">What is Tagging?</h3>
+<p>Tagging is the practice of assigning metadata to resources in order to improve organization, management, and reporting. Tags are key-value pairs that provide meaningful information about resources across various platforms.</p>
+<h3 id="why-we-tag">Why We Tag</h3>
+<p>Tagging helps with:</p>
+<ul>
+<li><strong>Cost Management</strong>: Understanding spending across projects and teams.</li>
+<li><strong>Resource Organization</strong>: Easily finding and managing resources by environment, team, project or function.</li>
+<li><strong>Automation</strong>: Enforcing policies and applying configurations automatically.</li>
+<li><strong>Security &amp; Compliance</strong>: Ensuring resources adhere to governance policies.</li>
+</ul>
+<h3 id="tagging-limitations-and-standardization">Tagging Limitations and Standardization</h3>
+<p>We currently use tagging across multiple technologies to standardize resource identification and facilitate efficient management. Each technology may have different tagging capabilities, but tags will look similar across different technologies as we aim to maintain consistency.</p>
+<p>To ensure compatibility across all resources, our tagging standard follows the <strong>most restrictive limitation</strong> of each platform.</p>
+<h3 id="general-tagging-constraints"><strong>General Tagging Constraints</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Standard Limit</th>
+<th>Platform with Restriction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tag Key Length</strong></td>
+<td>63 characters</td>
+<td>Kubernetes</td>
+</tr>
+<tr>
+<td><strong>Tag Value Length</strong></td>
+<td>63 characters</td>
+<td>Kubernetes</td>
+</tr>
+<tr>
+<td><strong>Allowed Characters</strong></td>
+<td>Alphanumeric, <code>-</code>, <code>_</code>, <code>.</code></td>
+<td>Varies by platform, limited by Kubernetes</td>
+</tr>
+<tr>
+<td><strong>Do Not Use</strong></td>
+<td>Whitespace, #,%, $, etc.</td>
+<td>Varies by platform</td>
+</tr>
+<tr>
+<td><strong>Case Format</strong></td>
+<td>Lowercase</td>
+<td>DataDog, Kubernetes</td>
+</tr>
+<tr>
+<td><strong>Max Tags per Resource</strong></td>
+<td>50</td>
+<td>Azure, AWS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="enforcement">Enforcement</h3>
+<p>As defined in this document, there will be required and optional tags for each specific technology. The detailed specifications can be found in the doc for each technology.</p>
+<p>All tagging should be treated as if enforcement is in place through utilities as this will eventually become the case.</p>
+<h3 id="naming-standards">Naming Standards</h3>
+<p>Tags must follow a structured naming convention to ensure uniformity across different platforms. As much as possible, tag names should be similar across technologies. This makes it easier to search and understand tags across platforms.</p>
+<p>Each tagging key will have the preface <strong><code>ts</code></strong> which stands for <strong>tagging-standard</strong>.</p>
+<p>Examples:</p>
+<pre><code>ts-key: value
+ts-environment: production
+ts-azure-region: uk-south
+</code></pre>
+<h2 id="tagging-standards-by-technology">Tagging Standards by Technology</h2>
+<h3 id="azure-tagging-standards"><a href="azure/">Azure Tagging Standards</a></h3>
+<p>Guidelines for applying tags to Azure resources.</p>
+<h3 id="aws-tagging-standards"><a href="aws/">AWS Tagging Standards</a></h3>
+<p>Best practices for AWS resource tagging.</p>
+<h3 id="github-tagging-standards"><a href="github/">GitHub Tagging Standards</a></h3>
+<p>How to tag repositories and workflows in GitHub.</p>
+<h3 id="datadog-tagging-standards"><a href="datadog/">DataDog Tagging Standards</a></h3>
+<p>Applying tags for monitoring and observability in DataDog.</p>
+<h3 id="kubernetes-tagging-standards"><a href="k8s/">Kubernetes Tagging Standards</a></h3>
+<p>Tagging conventions for Kubernetes objects and workloads.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="azure/" class="btn btn-neutral float-right" title="Azure">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="azure/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2025-02-14 20:00:22.449102+00:00
+-->

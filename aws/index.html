@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>AWS - Tagging Standards</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "AWS";
+        var mkdocs_page_input_path = "aws.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Tagging Standards
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">General Tagging</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../azure/">Azure</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">AWS</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tagging-limitations-in-aws">Tagging Limitations in AWS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#standardized-tagging-format">Standardized Tagging Format</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#required-tags-for-governance-cost-allocation">🚀 Required Tags (For Governance &amp; Cost Allocation)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#operational-security-tags">🔍 Operational &amp; Security Tags</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#automation-devops-tags">🔧 Automation &amp; DevOps Tags</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#aws-specific-cost-usage-report-tags">📊 AWS-Specific Cost &amp; Usage Report Tags</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tagging-best-practices">Tagging Best Practices</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../github/">GitHub</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../datadog/">DataDog</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../k8s/">Kubernetes</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Tagging Standards</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">AWS</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="aws-tagging-standards">AWS Tagging Standards</h1>
+<h2 id="overview">Overview</h2>
+<p>AWS supports resource tagging to help with organization, cost tracking, and access management. AWS tagging standards should be applied consistently across all resources to enable better governance and operational efficiency.</p>
+<h2 id="tagging-limitations-in-aws">Tagging Limitations in AWS</h2>
+<ul>
+<li><strong>Maximum Tags per Resource</strong>: Each AWS resource can have up to <strong>50 tags</strong>.</li>
+<li><strong>Tag Name and Value Length</strong>:</li>
+<li>Tag keys can be up to <strong>128 characters</strong>.</li>
+<li>Tag values can be up to <strong>256 characters</strong>.</li>
+<li><strong>Case Sensitivity</strong>: Tag keys are <strong>case-sensitive</strong>, meaning <code>Environment</code> and <code>environment</code> are treated as different tags.</li>
+<li><strong>Allowed Characters</strong>: Tag keys and values may only contain alphanumeric characters, <code>-</code> , <code>_</code> , <code>.</code> (AWS allows other characters, but those violate our standards for other technologies)</li>
+<li><strong>Tag Propagation</strong>: AWS does not automatically propagate tags across linked resources, such as EC2 instances and attached volumes.</li>
+</ul>
+<h2 id="standardized-tagging-format">Standardized Tagging Format</h2>
+<p>To ensure uniformity, all tags in AWS should follow a structured naming convention prefixed with <code>ts</code> (tagging-standard).</p>
+<h3 id="required-tags-for-governance-cost-allocation">🚀 Required Tags (For Governance &amp; Cost Allocation)</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Tag Key</strong></th>
+<th><strong>Example Value</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ts-application</code></td>
+<td><code>webapp-x</code></td>
+<td>Identifies the application the resource supports.</td>
+</tr>
+<tr>
+<td><code>ts-business-unit</code></td>
+<td><code>ecommerce</code></td>
+<td>Top-level division of your company that owns the subscription or workload that the resource belongs to. In smaller organizations, this tag might represent a single corporate or shared top-level organizational element.</td>
+</tr>
+<tr>
+<td><code>ts-cost-center</code></td>
+<td><code>cc-12345</code></td>
+<td>Links to a financial cost center.</td>
+</tr>
+<tr>
+<td><code>ts-criticality</code></td>
+<td><code>medium</code></td>
+<td>Business impact of the resource or supported workload.</td>
+</tr>
+<tr>
+<td><code>ts-data-classification</code></td>
+<td><code>confidential</code></td>
+<td>Sensitivity of data that the resource hosts.</td>
+</tr>
+<tr>
+<td><code>ts-dr</code></td>
+<td><code>mission-critical</code></td>
+<td>Business criticality of the application, workload, or service.</td>
+</tr>
+<tr>
+<td><code>ts-environment</code></td>
+<td><code>production</code></td>
+<td>Deployment environment of the application, workload, or service.</td>
+</tr>
+<tr>
+<td><code>ts-ops-team</code></td>
+<td><code>cloud-ops</code></td>
+<td>Team accountable for day-to-day operations.</td>
+</tr>
+<tr>
+<td><code>ts-owner</code></td>
+<td><code>devops-team</code></td>
+<td>Owner of the application, workload, or service.</td>
+</tr>
+<tr>
+<td><code>ts-project</code></td>
+<td><code>customer-portal</code></td>
+<td>Tracks which project the resource belongs to.</td>
+</tr>
+<tr>
+<td><code>ts-region</code></td>
+<td><code>us-east-1</code></td>
+<td>Helps in regional cost tracking.</td>
+</tr>
+<tr>
+<td><code>ts-service-class</code></td>
+<td><code>gold</code></td>
+<td>Service-level agreement level of the application, workload, or service.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="operational-security-tags">🔍 Operational &amp; Security Tags</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Tag Key</strong></th>
+<th><strong>Example Value</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ts-auto-shutdown</code></td>
+<td><code>enabled</code></td>
+<td>Can be used by automation scripts to turn off resources.</td>
+</tr>
+<tr>
+<td><code>ts-compliance</code></td>
+<td><code>soc2</code></td>
+<td>Marks compliance requirements (soc2, hipaa, etc.).</td>
+</tr>
+<tr>
+<td><code>ts-ops-commitment</code></td>
+<td><code>enhanced-baseline</code></td>
+<td>Level of operations support provided for the workload or resource.</td>
+</tr>
+<tr>
+<td><code>ts-start-date</code></td>
+<td><code>10-15-2020</code></td>
+<td>Date when the application, workload, or service was first deployed.</td>
+</tr>
+<tr>
+<td><code>ts-end-date</code></td>
+<td><code>10-15-2024</code></td>
+<td>Date when the application, workload, or service is scheduled for retirement.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="automation-devops-tags">🔧 Automation &amp; DevOps Tags</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Tag Key</strong></th>
+<th><strong>Example Value</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ts-backup</code></td>
+<td><code>daily</code></td>
+<td>Used for automated backup policies.</td>
+</tr>
+<tr>
+<td><code>ts-maintenance-window</code></td>
+<td><code>sun-2am</code></td>
+<td>Defines when updates should be applied.</td>
+</tr>
+<tr>
+<td><code>ts-terraform</code></td>
+<td><code>managed</code></td>
+<td>Indicates infrastructure-as-code ownership.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aws-specific-cost-usage-report-tags">📊 AWS-Specific Cost &amp; Usage Report Tags</h3>
+<p>If you're using AWS <strong>Cost Allocation Tags</strong>, AWS requires activation in the <strong>Billing Dashboard</strong>.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Tag Key</strong></th>
+<th><strong>Example Value</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ts-approver</code></td>
+<td><code>chris-contoso.com</code></td>
+<td>Person responsible for approving costs related to the resource.</td>
+</tr>
+<tr>
+<td><code>ts-aws-account</code></td>
+<td><code>123456789012</code></td>
+<td>Associates resources with an AWS account.</td>
+</tr>
+<tr>
+<td><code>ts-budget-amount</code></td>
+<td><code>200000</code></td>
+<td>Money approved for the application, service, or workload.</td>
+</tr>
+<tr>
+<td><code>ts-requester</code></td>
+<td><code>john-contoso.com</code></td>
+<td>User who requested the creation of the application.</td>
+</tr>
+<tr>
+<td><code>ts-service</code></td>
+<td><code>ec2</code></td>
+<td>Identifies the AWS service in use.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tagging-best-practices">Tagging Best Practices</h2>
+<ol>
+<li><strong>Apply Tags Consistently</strong>: Ensure all resources follow the standardized format.</li>
+<li><strong>Use AWS Organizations and Service Control Policies (SCPs)</strong>: Enforce tagging requirements across accounts.</li>
+<li><strong>Automate Tagging with AWS Lambda and Tag Policies</strong>: Ensure compliance using automation.</li>
+<li><strong>Review and Update Tags Regularly</strong>: Conduct periodic audits to maintain tag accuracy.</li>
+<li><strong>Leverage AWS Cost Allocation Tags</strong>: Assign relevant tags to track and optimize cloud spending.</li>
+</ol>
+<p>By following these standards, teams can improve resource management, streamline operations, and enhance cost visibility in AWS.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../azure/" class="btn btn-neutral float-left" title="Azure"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../github/" class="btn btn-neutral float-right" title="GitHub">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../azure/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../github/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

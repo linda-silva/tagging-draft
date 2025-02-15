@@ -13,7 +13,9 @@ Tagging in DataDog is essential for organizing, filtering, and aggregating metri
 - **Number of Tags**: Each resource can have up to **1000 tags**.
 
 ## Standardized Tagging Format
-To ensure consistency, all DataDog tags should follow a structured naming convention prefixed with `TS1` (Tagging Standard 1).
+To ensure consistency, all DataDog tags should follow a structured naming convention prefixed with `ts-` (tagging-standard).
+
+The exceptions to this standard are the `env` and `service` tags. These specific keys are required by DataDog, so the `ts-` prefix not required
 
 ### **Required Tags**
 | Tag Key            | Example Value   | Description                                      |

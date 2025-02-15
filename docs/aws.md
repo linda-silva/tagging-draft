@@ -15,30 +15,39 @@ AWS supports resource tagging to help with organization, cost tracking, and acce
 ## Standardized Tagging Format
 To ensure uniformity, all tags in AWS should follow a structured naming convention prefixed with `ts` (tagging-standard).
 
-### 🚀 Required Tags (For Governance & Cost Allocation)
+### 🚀 Required Tags
 | **Tag Key**         | **Example Value**       | **Purpose** |
 |---------------------|------------------------|------------|
-| `ts-application`   | `webapp-x`              | Identifies the application the resource supports. |
-| `ts-business-unit` | `ecommerce`             | Top-level division of your company that owns the subscription or workload that the resource belongs to. In smaller organizations, this tag might represent a single corporate or shared top-level organizational element. |
-| `ts-cost-center`   | `cc-12345`              | Links to a financial cost center. |
+| `ts-cost-center`   | `55332`              | Accounting cost center associated with the resource. |
+| `ts-env`   | `production`            | Deployment environment of the resource. |
+| `ts-team-owner`         | `dev-ops`           | Team that owns and is responsible for the resource. |
+
+### 💰 Suggested Business Related Tags
+| **Tag Key**         | **Example Value**       | **Purpose** |
+|---------------------|------------------------|------------|
+| `ts-application`   | `issue-tracking-system` | Added granularity, if the workload is subdivided across multiple resources. |
+| `ts-business-unit` | `finance`             | Top-level division of your company that owns the subscription or workload that the resource belongs to. In smaller organizations, this tag might represent a single corporate or shared top-level organizational element. |
+
 | `ts-criticality`   | `medium`  | Business impact of the resource or supported workload. |
-| `ts-data-classification`   | `confidential`  | Sensitivity of data that the resource hosts. |
-| `ts-dr`            | `mission-critical`      | Business criticality of the application, workload, or service. |
-| `ts-environment`   | `production`            | Deployment environment of the application, workload, or service. |
-| `ts-ops-team`   | `cloud-ops`  | Team accountable for day-to-day operations. |
-| `ts-owner`         | `devops-team`           | Owner of the application, workload, or service. |
+| `ts-data-class`   | `confidential`  | Sensitivity of data that the resource hosts. |
+| `ts-dr`            | `primary`      | If this tag exists, it indicates this resource is a participant in a DR strategy. The value of the tag indicates what the function of this resource is in the DR scope. |
+
+| `ts-ops-team`   | `cloud-operations`  | Team accountable for day-to-day operations. |
+
 | `ts-project`       | `customer-portal`       | Tracks which project the resource belongs to. |
-| `ts-region`      | `us-east-1`        | Helps in regional cost tracking. |
-| `ts-service-class`   | `gold`                | Service-level agreement level of the application, workload, or service. |
+| `ts-region`      | `uk-south`        | Geographical region where the resource is created. |
+| `ts-service-class`   | `gold`                | Service-level agreement level of the resource. |
+| `ts-provider`   | `aws`                | The cloud or data center provider. |
+| `ts-dc`   | `us-west-1a`              | Specific data center or zone where the resource is created. |
+| `ts-workload`   | `kinetic-saas`              | Name of the workload that the resource supports. |
 
 ### 🔍 Operational & Security Tags
 | **Tag Key**          | **Example Value**         | **Purpose** |
 |----------------------|--------------------------|------------|
 | `ts-auto-shutdown`   | `enabled`                | Can be used by automation scripts to turn off resources. |
 | `ts-compliance`      | `soc2`                   | Marks compliance requirements (soc2, hipaa, etc.). |
-| `ts-ops-commitment`   | `enhanced-baseline`     | Level of operations support provided for the workload or resource.|
-| `ts-start-date`   | `10-15-2020`                | Date when the application, workload, or service was first deployed. |
-| `ts-end-date`   | `10-15-2024`                | Date when the application, workload, or service is scheduled for retirement. |
+| `ts-start-date`   | `10-15-2020`                | Date when the resource was first deployed. |
+| `ts-end-date`   | `10-15-2024`                | Date when the resource is scheduled for retirement. |
 
 ### 🔧 Automation & DevOps Tags
 | **Tag Key**         | **Example Value**       | **Purpose** |
@@ -52,10 +61,10 @@ If you're using AWS **Cost Allocation Tags**, AWS requires activation in the **B
 
 | **Tag Key**       | **Example Value**  | **Purpose** |
 |-------------------|-------------------|------------|
-| `ts-approver` | `chris-contoso.com`     | Person responsible for approving costs related to the resource. |
+| `ts-approver` | `chris-smith`     | Person responsible for approving costs related to the resource. |
 | `ts-aws-account` | `123456789012`     | Associates resources with an AWS account. |
-| `ts-budget-amount` | `200000`     | Money approved for the application, service, or workload. |
-| `ts-requester` | `john-contoso.com`     | User who requested the creation of the application. |
+| `ts-budget` | `200000`     | Money approved for the resource. |
+| `ts-requester` | `kinetic-dev`     | Team or individual who requested the creation of the resource. |
 | `ts-service`     | `ec2`              | Identifies the AWS service in use. |
 
 ## Tagging Best Practices

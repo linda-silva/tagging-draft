@@ -30,7 +30,7 @@ To ensure compatibility across all resources, our tagging standard follows the *
 | **Max Tags per Resource** | 50                          | Azure, AWS                                |
 
 ### Enforcement
-As defined in this document, there will be required and optional tags for each specific technology. The detailed specifications can be found in the doc for each technology.
+As defined in this document, there will be required and optional tags that apply to all technologies, and some that are specific to a particular platform. The detailed specifications can be found in the doc for each technology.
 
 All tagging should be treated as if enforcement is in place through utilities as this will eventually become the case.
 
@@ -55,7 +55,6 @@ ts-azure-region: uk-south
 | Team Owner     | `ts-team-owner`      | Team that owns and is responsible for the resource. | `dev-ops` |
 | Customer ID     | `ts-customer-id`    | Customer IDs taken from SoA, 1 when not attributable to a specific customer. | `1234567` |
 | Product        | `ts-product`         | Epicor product(s) name associated with this resource, `epicor-all` when not attributable to a specific product. | `kinetic` |
-| Network        | `ts-network`         | Describes the network segment where the service is running. DMZ (demilitarized zone), internal, and external networks are common examples. | `dmz` |
 | Compliance     | `ts-compliance`      | Specifies the compliance standards or regulations applicable to the service. Examples include PCI-DSS, SOX, FedRAMP, GDPR, and HIPAA. | `hipaa` |
 
 ### 2. ♾️ Suggested DevOps Tags
@@ -67,11 +66,7 @@ ts-azure-region: uk-south
 | Data Center      | `ts-dc`           | Specific data center or zone where the resource is created. | `us-west-1a` |
 | Operations team  | `ts-ops-team`     | Team accountable for day-to-day operations. | `central-it` |
 | Version         | `ts-version`      | Specifies the version of the application or service being deployed. | `25.1` |
-| Journey         | `ts-journey`      | Tracks key user journeys across various processes, such as logging in, browsing products, completing checkout, uploading files, resetting passwords, and tracking orders. | `login` |
 | Application     | `ts-application`  | Added granularity, if the workload is subdivided across multiple resources. | `issue-tracking-system` |
-| Runtime        | `ts-runtime`      | Names the application or software being used. Common examples are web servers and application servers like Apache, Tomcat, and WebLogic. | `k8s` |
-| Role           | `ts-role`         | Describes the role of the service or component within the architecture. Examples include web servers, application servers, caching systems, and APIs. | `web` |
-| Platform       | `ts-platform`     | Specifies the underlying platform or ecosystem on which the service operates. Examples include middleware solutions, broader technology ecosystems, or shared platforms. | `middleware` |
 
 ### 3. 💰 Suggested Business Tags
 | **Tag Name**               | **Tag Key**        | **Description**  | **Example Value** |

@@ -4,7 +4,7 @@
 AWS supports resource tagging to help with organization, cost tracking, and access management. AWS tagging standards should be applied consistently across all resources to enable better governance and operational efficiency.
 
 ## **AWS Tagging Constraints**
-- **Tag Format**: Keys and values are specified separately. Keys are required, values are optional.
+- **Tag Format**: Tags are key-value pairs where keys and values are specified separately. Keys are required, values are optional.
 - **Character Limits**:
   - Tag keys: Up to **128 characters**.
   - Tag values: Up to **256 characters**.

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Azure - Tagging Standards</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Azure";
+        var mkdocs_page_input_path = "azure.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Tagging Standards
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">General Tagging</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Azure</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tagging-limitations-in-azure">Tagging Limitations in Azure</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#standardized-tagging-format">Standardized Tagging Format</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#required-azure-tags">🚀 Required Azure Tags</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#suggested-azure-devops-tags">♾️ Suggested Azure DevOps Tags</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#suggested-azure-business-tags">💰 Suggested Azure Business Tags</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optional-azure-tags">📊 Optional Azure Tags</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#applying-multiple-values-for-azure-tags">Applying Multiple Values for Azure Tags</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tagging-best-practices">Tagging Best Practices</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../aws/">AWS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../github/">GitHub</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../datadog/">DataDog</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../k8s/">Kubernetes</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Tagging Standards</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Azure</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="azure-tagging-standards">Azure Tagging Standards</h1>
+<h2 id="overview">Overview</h2>
+<p>Azure supports resource tagging to help with organization, cost management, and governance. However, Azure has specific limitations and best practices that must be followed when implementing tagging standards.</p>
+<h2 id="tagging-limitations-in-azure">Tagging Limitations in Azure</h2>
+<ul>
+<li><strong>Tag Format</strong>: Tags are name-value pairs where names and values are specified separately. Names are required, values are optional.</li>
+<li><strong>Character Limits</strong>:</li>
+<li>Tag names: Up to <strong>512 characters</strong> (except for storage accounts, which have a limit of 128 characters).</li>
+<li>Tag values: Up to <strong>256 characters</strong>.</li>
+<li><strong>Allowed Characters</strong>: Tag names and values may only contain alphanumeric characters, <code>-</code> , <code>_</code> , <code>.</code> (Azure allows other characters, but those violate our standards for other technologies)</li>
+<li><strong>Case Sensitivity</strong>: Tag names are <strong>case-insensitive</strong>, but values are <strong>case-sensitive</strong>. All tags will be created in lowercase to comply with standards in other technologies.</li>
+<li><strong>Maximum Tags per Resource</strong>: Each resource can have up to <strong>50 tags</strong>.</li>
+<li><strong>Inherited Tags</strong>: Tags applied to resource groups are <strong>not automatically inherited</strong> by resources within the group.</li>
+</ul>
+<h2 id="standardized-tagging-format">Standardized Tagging Format</h2>
+<p>To ensure consistency, all tags in Azure should follow a structured naming convention prefixed with <code>ts</code> (tagging-standard).</p>
+<h3 id="required-azure-tags">🚀 Required Azure Tags</h3>
+<table>
+<thead>
+<tr>
+<th>Tag Name</th>
+<th>Tag Key</th>
+<th>Description</th>
+<th>Values</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Environment</td>
+<td>ts-env</td>
+<td>Deployment environment of the resource.</td>
+<td>prod<br>dev<br>qa<br>stage<br>sandbox<br>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Cost center</td>
+<td>ts-cost-center</td>
+<td>Accounting cost center associated with the resource.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Team Owner</td>
+<td>ts-team-owner</td>
+<td>Team that owns and is responsible for the resource.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Customer ID</td>
+<td>ts-customer-id</td>
+<td>Customer IDs taken from SoA; '1' when not attributable to a specific customer.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Product</td>
+<td>ts-product</td>
+<td>Epicor product(s) name associated with this resource; 'epicor-all' when not attributable to a specific product.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Compliance</td>
+<td>ts-compliance</td>
+<td>Specifies the compliance standards or regulations applicable to the service.</td>
+<td>pci-dss<br>sox<br>fedramp<br>gdpr<br>hipaa<br>soc</td>
+<td>General</td>
+</tr>
+</tbody>
+</table>
+<h3 id="suggested-azure-devops-tags">♾️ Suggested Azure DevOps Tags</h3>
+<table>
+<thead>
+<tr>
+<th>Tag Name</th>
+<th>Tag Key</th>
+<th>Description</th>
+<th>Values</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disaster recovery</td>
+<td>ts-dr</td>
+<td>Indicates this resource is part of a DR strategy; the value specifies its role in DR.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Provider</td>
+<td>ts-provider</td>
+<td>The cloud or data center provider.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>ts-region</td>
+<td>Geographical region where the resource is created.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Data Center</td>
+<td>ts-dc</td>
+<td>Specific data center or zone where the resource is created.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Operations team</td>
+<td>ts-ops-team</td>
+<td>Team accountable for day-to-day operations.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>ts-version</td>
+<td>Specifies the version of the application or service being deployed.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Application</td>
+<td>ts-application</td>
+<td>Added granularity if the workload is subdivided across multiple resources.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+</tbody>
+</table>
+<h3 id="suggested-azure-business-tags">💰 Suggested Azure Business Tags</h3>
+<table>
+<thead>
+<tr>
+<th>Tag Name</th>
+<th>Tag Key</th>
+<th>Description</th>
+<th>Values</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget required/approved</td>
+<td>ts-budget</td>
+<td>Money approved for the resource.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Approver name</td>
+<td>ts-approver</td>
+<td>Person responsible for approving costs related to the resource.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Service class</td>
+<td>ts-service-class</td>
+<td>Service-level agreement level of the resource.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Workload</td>
+<td>ts-workload</td>
+<td>Name of the workload that the resource supports.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Data classification</td>
+<td>ts-data-class</td>
+<td>Sensitivity of data that the resource hosts.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Business criticality</td>
+<td>ts-criticality</td>
+<td>Business impact of the resource or supported workload.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Business unit</td>
+<td>ts-business-unit</td>
+<td>Top-level division of your company that owns the subscription or workload that the resource belongs to.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+</tbody>
+</table>
+<h3 id="optional-azure-tags">📊 Optional Azure Tags</h3>
+<table>
+<thead>
+<tr>
+<th>Tag Name</th>
+<th>Tag Key</th>
+<th>Description</th>
+<th>Values</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start date of the project</td>
+<td>ts-start-date</td>
+<td>Date when the resource was first deployed.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>End date of the project</td>
+<td>ts-end-date</td>
+<td>Date when the resource is scheduled for retirement.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+<tr>
+<td>Requester</td>
+<td>ts-requester</td>
+<td>Team or individual who requested the creation of the resource.</td>
+<td>TBD</td>
+<td>General</td>
+</tr>
+</tbody>
+</table>
+<h2 id="applying-multiple-values-for-azure-tags">Applying Multiple Values for Azure Tags</h2>
+<p>WIP</p>
+<h2 id="tagging-best-practices">Tagging Best Practices</h2>
+<ol>
+<li><strong>Apply Tags Consistently</strong>: Ensure that all resources follow the standardized format.</li>
+<li><strong>Use Automation</strong>: Utilize Azure Policy to enforce required tags on resource creation.</li>
+<li><strong>Review and Update Tags Regularly</strong>: Maintain accurate tags by conducting periodic audits.</li>
+<li><strong>Use Resource Groups for Better Organization</strong>: Group related resources and apply shared tags where applicable.</li>
+<li><strong>Leverage Tagging for Cost Management</strong>: Assign relevant tags to track and optimize cloud spending.</li>
+</ol>
+<p>By following these standards, teams can ensure better resource management and alignment with organizational policies in Azure.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="General Tagging"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../aws/" class="btn btn-neutral float-right" title="AWS">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../aws/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

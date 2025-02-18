@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Tagging Standards</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "General Tagging";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> Tagging Standards
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">General Tagging</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-tagging">What is Tagging?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#why-we-tag">Why We Tag</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tagging-limitations-and-standardization">Tagging Limitations and Standardization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#general-tagging-constraints">General Tagging Constraints</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#enforcement">Enforcement</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#naming-standards">Naming Standards</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tagging-list">Tagging List</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-required-tags">1. 🚀 Required Tags</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-suggested-devops-tags">2. ♾️ Suggested DevOps Tags</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-suggested-business-tags">3. 💰 Suggested Business Tags</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-optional-tags">4. 📊 Optional Tags</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tagging-standards-by-technology">Tagging Standards by Technology</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#azure-tagging-standards">Azure Tagging Standards</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#aws-tagging-standards">AWS Tagging Standards</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#github-tagging-standards">GitHub Tagging Standards</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datadog-tagging-standards">DataDog Tagging Standards</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-tagging-standards">Kubernetes Tagging Standards</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="azure/">Azure</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="aws/">AWS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="github/">GitHub</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="datadog/">DataDog</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="k8s/">Kubernetes</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Tagging Standards</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">General Tagging</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="general-tagging">General Tagging</h1>
+<h2 id="overview">Overview</h2>
+<h3 id="what-is-tagging">What is Tagging?</h3>
+<p>Tagging is the practice of assigning metadata to resources in order to improve organization, management, and reporting. Tags are key-value pairs that provide meaningful information about resources across various platforms.</p>
+<h3 id="why-we-tag">Why We Tag</h3>
+<p>Tagging helps with:</p>
+<ul>
+<li><strong>Cost Management</strong>: Understanding spending across projects and teams.</li>
+<li><strong>Resource Organization</strong>: Easily finding and managing resources by environment, team, project or function.</li>
+<li><strong>Automation</strong>: Enforcing policies and applying configurations automatically.</li>
+<li><strong>Security &amp; Compliance</strong>: Ensuring resources adhere to governance policies.</li>
+</ul>
+<h3 id="tagging-limitations-and-standardization">Tagging Limitations and Standardization</h3>
+<p>We currently use tagging across multiple technologies to standardize resource identification and facilitate efficient management. Each technology may have different tagging capabilities, but tags will look similar across different technologies as we aim to maintain consistency.</p>
+<p>To ensure compatibility across all resources, our tagging standard follows the <strong>most restrictive limitation</strong> of each platform.</p>
+<h3 id="general-tagging-constraints"><strong>General Tagging Constraints</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Standard Limit</th>
+<th>Platform with Restriction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tag Key Length</strong></td>
+<td>63 characters</td>
+<td>Kubernetes</td>
+</tr>
+<tr>
+<td><strong>Tag Value Length</strong></td>
+<td>63 characters</td>
+<td>Kubernetes</td>
+</tr>
+<tr>
+<td><strong>Allowed Characters</strong></td>
+<td>Alphanumeric, <code>-</code>, <code>_</code>, <code>.</code></td>
+<td>Varies by platform, limited by Kubernetes</td>
+</tr>
+<tr>
+<td><strong>Do Not Use</strong></td>
+<td>Whitespace, #,%, $, etc.</td>
+<td>Varies by platform</td>
+</tr>
+<tr>
+<td><strong>Case Format</strong></td>
+<td>Lowercase</td>
+<td>DataDog, Kubernetes</td>
+</tr>
+<tr>
+<td><strong>Max Tags per Resource</strong></td>
+<td>50</td>
+<td>Azure, AWS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="enforcement">Enforcement</h3>
+<p>As defined in this document, there will be required and optional tags that apply to all technologies, and some that are specific to a particular platform. The detailed specifications can be found in the doc for each technology.</p>
+<p>All tagging should be treated as if enforcement is in place through utilities as this will eventually become the case.</p>
+<h3 id="naming-standards">Naming Standards</h3>
+<p>Tags must follow a structured naming convention to ensure uniformity across different platforms. As much as possible, tag names should be similar across technologies. This makes it easier to search and understand tags across platforms.</p>
+<p>Each tagging key will have the preface <strong><code>ts</code></strong> which stands for <strong>tagging-standard</strong>.</p>
+<p>Examples:</p>
+<pre><code>ts-key: value
+ts-environment: production
+ts-azure-region: uk-south
+</code></pre>
+<h2 id="tagging-list">Tagging List</h2>
+<h3 id="1-required-tags">1. 🚀 Required Tags</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Tag Name</strong></th>
+<th><strong>Tag Key</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Example Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cost center</td>
+<td><code>ts-cost-center</code></td>
+<td>Accounting cost center associated with the resource.</td>
+<td><code>55332</code></td>
+</tr>
+<tr>
+<td>Environment</td>
+<td><code>ts-env</code></td>
+<td>Deployment environment of the resource.</td>
+<td><code>prod</code></td>
+</tr>
+<tr>
+<td>Team Owner</td>
+<td><code>ts-team-owner</code></td>
+<td>Team that owns and is responsible for the resource.</td>
+<td><code>dev-ops</code></td>
+</tr>
+<tr>
+<td>Customer ID</td>
+<td><code>ts-customer-id</code></td>
+<td>Customer IDs taken from SoA, 1 when not attributable to a specific customer.</td>
+<td><code>1234567</code></td>
+</tr>
+<tr>
+<td>Product</td>
+<td><code>ts-product</code></td>
+<td>Epicor product(s) name associated with this resource, <code>epicor-all</code> when not attributable to a specific product.</td>
+<td><code>kinetic</code></td>
+</tr>
+<tr>
+<td>Compliance</td>
+<td><code>ts-compliance</code></td>
+<td>Specifies the compliance standards or regulations applicable to the service. Examples include PCI-DSS, SOX, FedRAMP, GDPR, and HIPAA.</td>
+<td><code>hipaa</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-suggested-devops-tags">2. ♾️ Suggested DevOps Tags</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Tag Name</strong></th>
+<th><strong>Tag Key</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Example Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disaster recovery</td>
+<td><code>ts-dr</code></td>
+<td>If this tag exists, it indicates this resource is a participant in a DR strategy. The value of the tag indicates what the function of this resource is in the DR scope.</td>
+<td><code>primary</code></td>
+</tr>
+<tr>
+<td>Provider</td>
+<td><code>ts-provider</code></td>
+<td>The cloud or data center provider.</td>
+<td><code>azure</code></td>
+</tr>
+<tr>
+<td>Region</td>
+<td><code>ts-region</code></td>
+<td>Geographical region where the resource is created.</td>
+<td><code>west-europe</code></td>
+</tr>
+<tr>
+<td>Data Center</td>
+<td><code>ts-dc</code></td>
+<td>Specific data center or zone where the resource is created.</td>
+<td><code>us-west-1a</code></td>
+</tr>
+<tr>
+<td>Operations team</td>
+<td><code>ts-ops-team</code></td>
+<td>Team accountable for day-to-day operations.</td>
+<td><code>central-it</code></td>
+</tr>
+<tr>
+<td>Version</td>
+<td><code>ts-version</code></td>
+<td>Specifies the version of the application or service being deployed.</td>
+<td><code>25.1</code></td>
+</tr>
+<tr>
+<td>Application</td>
+<td><code>ts-application</code></td>
+<td>Added granularity, if the workload is subdivided across multiple resources.</td>
+<td><code>issue-tracking-system</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-suggested-business-tags">3. 💰 Suggested Business Tags</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Tag Name</strong></th>
+<th><strong>Tag Key</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Example Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget required/approved</td>
+<td><code>ts-budget</code></td>
+<td>Money approved for the resource.</td>
+<td><code>200000</code></td>
+</tr>
+<tr>
+<td>Approver name</td>
+<td><code>ts-approver</code></td>
+<td>Person responsible for approving costs related to the resource.</td>
+<td><code>chris-smith</code></td>
+</tr>
+<tr>
+<td>Service class</td>
+<td><code>ts-service-class</code></td>
+<td>Service-level agreement level of the resource.</td>
+<td><code>dev</code></td>
+</tr>
+<tr>
+<td>Workload</td>
+<td><code>ts-workload</code></td>
+<td>Name of the workload that the resource supports.</td>
+<td><code>kinetic-saas</code></td>
+</tr>
+<tr>
+<td>Data classification</td>
+<td><code>ts-data-class</code></td>
+<td>Sensitivity of data that the resource hosts.</td>
+<td><code>non-business</code></td>
+</tr>
+<tr>
+<td>Business criticality</td>
+<td><code>ts-criticality</code></td>
+<td>Business impact of the resource or supported workload.</td>
+<td><code>low</code></td>
+</tr>
+<tr>
+<td>Business unit</td>
+<td><code>ts-business-unit</code></td>
+<td>Top-level division of your company that owns the subscription or workload that the resource belongs to. In smaller organizations, this tag might represent a single corporate or shared top-level organizational element.</td>
+<td><code>finance</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-optional-tags">4. 📊 Optional Tags</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Tag Name</strong></th>
+<th><strong>Tag Key</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Example Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start date of the project</td>
+<td><code>ts-start-date</code></td>
+<td>Date when the resource was first deployed.</td>
+<td><code>10-15-2020</code></td>
+</tr>
+<tr>
+<td>End date of the project</td>
+<td><code>ts-end-date</code></td>
+<td>Date when the resource is scheduled for retirement.</td>
+<td><code>10-15-2023</code></td>
+</tr>
+<tr>
+<td>Requester</td>
+<td><code>ts-requester</code></td>
+<td>Team or individual who requested the creation of the resource.</td>
+<td><code>kinetic-dev</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tagging-standards-by-technology">Tagging Standards by Technology</h2>
+<h3 id="azure-tagging-standards"><a href="azure/">Azure Tagging Standards</a></h3>
+<p>Guidelines for applying tags to Azure resources.</p>
+<h3 id="aws-tagging-standards"><a href="aws/">AWS Tagging Standards</a></h3>
+<p>Best practices for AWS resource tagging.</p>
+<h3 id="github-tagging-standards"><a href="github/">GitHub Tagging Standards</a></h3>
+<p>How to tag repositories and workflows in GitHub.</p>
+<h3 id="datadog-tagging-standards"><a href="datadog/">DataDog Tagging Standards</a></h3>
+<p>Applying tags for monitoring and observability in DataDog.</p>
+<h3 id="kubernetes-tagging-standards"><a href="k8s/">Kubernetes Tagging Standards</a></h3>
+<p>Tagging conventions for Kubernetes objects and workloads.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="azure/" class="btn btn-neutral float-right" title="Azure">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="azure/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2025-02-18 21:55:47.048507+00:00
+-->

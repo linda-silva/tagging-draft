@@ -46,6 +46,52 @@ ts-environment: production
 ts-azure-region: uk-south
 ```
 
+### Tagging List
+## 1. 🚀 Required Tags
+| **Tag Name**     | **Tag Key**         | **Description**  | **Example Value** |
+|------------------|--------------------|------------------|------------------|
+| Cost center     | `ts-cost-center`    | Accounting cost center associated with the resource. | `55332` |
+| Environment     | `ts-env`            | Deployment environment of the resource. | `prod` |
+| Team Owner     | `ts-team-owner`      | Team that owns and is responsible for the resource. | `dev-ops` |
+| Customer ID     | `ts-customer-id`    | Customer IDs taken from SoA, 1 when not attributable to a specific customer. | `1234567` |
+| Product        | `ts-product`         | Epicor product(s) name associated with this resource, `epicor-all` when not attributable to a specific product. | `kinetic` |
+| Network        | `ts-network`         | Describes the network segment where the service is running. DMZ (demilitarized zone), internal, and external networks are common examples. | `dmz` |
+| Compliance     | `ts-compliance`      | Specifies the compliance standards or regulations applicable to the service. Examples include PCI-DSS, SOX, FedRAMP, GDPR, and HIPAA. | `hipaa` |
+
+## 2. ♾️ Suggested DevOps Tags
+| **Tag Name**        | **Tag Key**      | **Description**  | **Example Value** |
+|---------------------|-----------------|------------------|------------------|
+| Disaster recovery  | `ts-dr`          | If this tag exists, it indicates this resource is a participant in a DR strategy. The value of the tag indicates what the function of this resource is in the DR scope. | `primary` |
+| Provider          | `ts-provider`     | The cloud or data center provider. | `azure` |
+| Region           | `ts-region`       | Geographical region where the resource is created. | `west-europe` |
+| Data Center      | `ts-dc`           | Specific data center or zone where the resource is created. | `us-west-1a` |
+| Operations team  | `ts-ops-team`     | Team accountable for day-to-day operations. | `central-it` |
+| Version         | `ts-version`      | Specifies the version of the application or service being deployed. | `25.1` |
+| Journey         | `ts-journey`      | Tracks key user journeys across various processes, such as logging in, browsing products, completing checkout, uploading files, resetting passwords, and tracking orders. | `login` |
+| Application     | `ts-application`  | Added granularity, if the workload is subdivided across multiple resources. | `issue-tracking-system` |
+| Runtime        | `ts-runtime`      | Names the application or software being used. Common examples are web servers and application servers like Apache, Tomcat, and WebLogic. | `k8s` |
+| Role           | `ts-role`         | Describes the role of the service or component within the architecture. Examples include web servers, application servers, caching systems, and APIs. | `web` |
+| Platform       | `ts-platform`     | Specifies the underlying platform or ecosystem on which the service operates. Examples include middleware solutions, broader technology ecosystems, or shared platforms. | `middleware` |
+
+## 3. 💰 Suggested Business Tags
+| **Tag Name**               | **Tag Key**        | **Description**  | **Example Value** |
+|---------------------------|-------------------|------------------|------------------|
+| Budget required/approved | `ts-budget`       | Money approved for the resource. | `200000` |
+| Approver name            | `ts-approver`     | Person responsible for approving costs related to the resource. | `chris-smith` |
+| Service class            | `ts-service-class`| Service-level agreement level of the resource. | `dev` |
+| Workload                 | `ts-workload`     | Name of the workload that the resource supports. | `kinetic-saas` |
+| Data classification      | `ts-data-class`   | Sensitivity of data that the resource hosts. | `non-business` |
+| Business criticality     | `ts-criticality`  | Business impact of the resource or supported workload. | `low` |
+| Business unit            | `ts-business-unit`| Top-level division of your company that owns the subscription or workload that the resource belongs to. In smaller organizations, this tag might represent a single corporate or shared top-level organizational element. | `finance` |
+
+## 4. 📊 Optional Tags
+| **Tag Name**              | **Tag Key**        | **Description**  | **Example Value** |
+|--------------------------|-------------------|------------------|------------------|
+| Start date of the project | `ts-start-date`   | Date when the resource was first deployed. | `10-15-2020` |
+| End date of the project   | `ts-end-date`     | Date when the resource is scheduled for retirement. | `10-15-2023` |
+| Requester                 | `ts-requester`    | Team or individual who requested the creation of the resource. | `kinetic-dev` |
+
+
 ## Tagging Standards by Technology
 
 ### [Azure Tagging Standards](azure.md)

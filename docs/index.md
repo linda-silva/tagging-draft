@@ -46,8 +46,8 @@ ts-environment: production
 ts-azure-region: uk-south
 ```
 
-### Tagging List
-## 1. 🚀 Required Tags
+## Tagging List
+### 1. 🚀 Required Tags
 | **Tag Name**     | **Tag Key**         | **Description**  | **Example Value** |
 |------------------|--------------------|------------------|------------------|
 | Cost center     | `ts-cost-center`    | Accounting cost center associated with the resource. | `55332` |
@@ -58,7 +58,7 @@ ts-azure-region: uk-south
 | Network        | `ts-network`         | Describes the network segment where the service is running. DMZ (demilitarized zone), internal, and external networks are common examples. | `dmz` |
 | Compliance     | `ts-compliance`      | Specifies the compliance standards or regulations applicable to the service. Examples include PCI-DSS, SOX, FedRAMP, GDPR, and HIPAA. | `hipaa` |
 
-## 2. ♾️ Suggested DevOps Tags
+### 2. ♾️ Suggested DevOps Tags
 | **Tag Name**        | **Tag Key**      | **Description**  | **Example Value** |
 |---------------------|-----------------|------------------|------------------|
 | Disaster recovery  | `ts-dr`          | If this tag exists, it indicates this resource is a participant in a DR strategy. The value of the tag indicates what the function of this resource is in the DR scope. | `primary` |
@@ -73,7 +73,7 @@ ts-azure-region: uk-south
 | Role           | `ts-role`         | Describes the role of the service or component within the architecture. Examples include web servers, application servers, caching systems, and APIs. | `web` |
 | Platform       | `ts-platform`     | Specifies the underlying platform or ecosystem on which the service operates. Examples include middleware solutions, broader technology ecosystems, or shared platforms. | `middleware` |
 
-## 3. 💰 Suggested Business Tags
+### 3. 💰 Suggested Business Tags
 | **Tag Name**               | **Tag Key**        | **Description**  | **Example Value** |
 |---------------------------|-------------------|------------------|------------------|
 | Budget required/approved | `ts-budget`       | Money approved for the resource. | `200000` |
@@ -84,7 +84,7 @@ ts-azure-region: uk-south
 | Business criticality     | `ts-criticality`  | Business impact of the resource or supported workload. | `low` |
 | Business unit            | `ts-business-unit`| Top-level division of your company that owns the subscription or workload that the resource belongs to. In smaller organizations, this tag might represent a single corporate or shared top-level organizational element. | `finance` |
 
-## 4. 📊 Optional Tags
+### 4. 📊 Optional Tags
 | **Tag Name**              | **Tag Key**        | **Description**  | **Example Value** |
 |--------------------------|-------------------|------------------|------------------|
 | Start date of the project | `ts-start-date`   | Date when the resource was first deployed. | `10-15-2020` |

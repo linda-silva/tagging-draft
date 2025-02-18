@@ -9,7 +9,7 @@ Azure supports resource tagging to help with organization, cost management, and 
   - Tag names: Up to **512 characters** (except for storage accounts, which have a limit of 128 characters).
   - Tag values: Up to **256 characters**.
 - **Allowed Characters**: Tag names and values may only contain alphanumeric characters, `-` , `_` , `.` (Azure allows other characters, but those violate our standards for other technologies)
-- **Case Sensitivity**: Tag names are **case-insensitive**, but values are **case-sensitive**.
+- **Case Sensitivity**: Tag names are **case-insensitive**, but values are **case-sensitive**. All tags will be created in lowercase to comply with standards in other technologies.
 - **Maximum Tags per Resource**: Each resource can have up to **50 tags**.
 - **Inherited Tags**: Tags applied to resource groups are **not automatically inherited** by resources within the group.
 

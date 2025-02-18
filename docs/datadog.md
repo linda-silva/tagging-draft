@@ -9,7 +9,7 @@ Tagging in DataDog is essential for organizing, filtering, and aggregating metri
   - Tag keys: Up to **200 characters**.
   - Tag values: Up to **200 characters**.
 - **Allowed Characters**: Tag keys and values may only contain alphanumeric characters, `-` , `_` , `.` (DataDog allows other characters, but those violate our standards for other technologies)
-- **Case Sensitivity**: Tags are **case-sensitive** (`env:Prod` is different from `env:prod`).
+- **Case Sensitivity**: Tags are **case-sensitive** (`env:Prod` is different from `env:prod`). All tags will be created in lowercase to comply with standards in other technologies.
 - **Maxium Tags Per Resource**: Each resource can have up to **1000 tags**.
 
 ## Standardized Tagging Format

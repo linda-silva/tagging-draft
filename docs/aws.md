@@ -3,69 +3,60 @@
 ## Overview
 AWS supports resource tagging to help with organization, cost tracking, and access management. AWS tagging standards should be applied consistently across all resources to enable better governance and operational efficiency.
 
-## Tagging Limitations in AWS
-- **Maximum Tags per Resource**: Each AWS resource can have up to **50 tags**.
-- **Tag Name and Value Length**:
-  - Tag keys can be up to **128 characters**.
-  - Tag values can be up to **256 characters**.
-- **Case Sensitivity**: Tag keys are **case-sensitive**, meaning `Environment` and `environment` are treated as different tags.
+## **AWS Tagging Constraints**
+- **Tag Format**: Keys and values are specified separately. Keys are required, values are optional.
+- **Character Limits**:
+  - Tag keys: Up to **128 characters**.
+  - Tag values: Up to **256 characters**.
 - **Allowed Characters**: Tag keys and values may only contain alphanumeric characters, `-` , `_` , `.` (AWS allows other characters, but those violate our standards for other technologies)
-- **Tag Propagation**: AWS does not automatically propagate tags across linked resources, such as EC2 instances and attached volumes.
+- **Case Sensitivity**: Tag keys are **case-sensitive**, meaning `Environment` and `environment` are treated as different tags. All tags will be created in lowercase to comply with standards in other technologies.
+- **Maximum Tags per Resource**: Each AWS resource can have up to **50 tags**.
+- **Tag Propagation**: AWS does not automatically propagate tags across linked resources, such as EC2 instances and attached volumes. AWS generated tags are typically prefixed with `aws`, so this prefix cannot be used in user-defined tag keys.
 
-## Standardized Tagging Format
+## Naming Standards
 To ensure uniformity, all tags in AWS should follow a structured naming convention prefixed with `ts` (tagging-standard).
 
-### 🚀 Required Tags
-| **Tag Key**         | **Example Value**       | **Purpose** |
-|---------------------|------------------------|------------|
-| `ts-cost-center`   | `55332`              | Accounting cost center associated with the resource. |
-| `ts-env`   | `production`            | Deployment environment of the resource. |
-| `ts-team-owner`         | `dev-ops`           | Team that owns and is responsible for the resource. |
+### 🚀 Required AWS Tags
+| Tag Name     | Tag Key          | Description                                                                                                     | Values                                            | Scope        |
+|--------------|------------------|-----------------------------------------------------------------------------------------------------------------|---------------------------------------------------|-------------|
+| Environment  | ts-env              | Deployment environment of the resource.                                                                         | prod<br>dev<br>qa<br>stage<br>sandbox<br>TBD      | General      |
+| Cost center  | ts-cost-center   | Accounting cost center associated with the resource.                                                            | TBD                                               | General      |
+| Team Owner   | ts-team-owner    | Team that owns and is responsible for the resource.                                                             | TBD                                               | General      |
+| Customer ID  | ts-customer-id   | Customer IDs taken from SoA; '1' when not attributable to a specific customer.                                  | TBD                                               | General      |
+| Product      | ts-product       | Epicor product(s) name associated with this resource; 'epicor-all' when not attributable to a specific product. | TBD                                               | General      |
+| Compliance   | ts-compliance    | Specifies the compliance standards or regulations applicable to the service.                                    | pci-dss<br>sox<br>fedramp<br>gdpr<br>hipaa<br>soc | General      |
 
-### 💰 Suggested Business Related Tags
-| **Tag Key**         | **Example Value**       | **Purpose** |
-|---------------------|------------------------|------------|
-| `ts-application`   | `issue-tracking-system` | Added granularity, if the workload is subdivided across multiple resources. |
-| `ts-business-unit` | `finance`             | Top-level division of your company that owns the subscription or workload that the resource belongs to. In smaller organizations, this tag might represent a single corporate or shared top-level organizational element. |
+### ♾️ Suggested AWS DevOps Tags
+| Tag Name           | Tag Key         | Description                                                                           | Values | Scope        |
+|--------------------|-----------------|---------------------------------------------------------------------------------------|--------|--------------|
+| Disaster recovery  | ts-dr           | Indicates this resource is part of a DR strategy; the value specifies its role in DR. | TBD    | General      |
+| Provider           | ts-provider     | The cloud or data center provider.                                                    | TBD    | General      |
+| Region             | ts-region       | Geographical region where the resource is created.                                    | TBD    | General      |
+| Data Center        | ts-dc           | Specific data center or zone where the resource is created.                           | TBD    | General      |
+| Operations team    | ts-ops-team     | Team accountable for day-to-day operations.                                           | TBD    | General      |
+| Version            | ts-version      | Specifies the version of the application or service being deployed.                   | TBD    | General      |
+| Application        | ts-application  | Added granularity if the workload is subdivided across multiple resources.            | TBD    | General      |
 
-| `ts-criticality`   | `medium`  | Business impact of the resource or supported workload. |
-| `ts-data-class`   | `confidential`  | Sensitivity of data that the resource hosts. |
-| `ts-dr`            | `primary`      | If this tag exists, it indicates this resource is a participant in a DR strategy. The value of the tag indicates what the function of this resource is in the DR scope. |
+### 💰 Suggested AWS Business Tags
+| Tag Name                 | Tag Key           | Description                                                                                             | Values | Scope   |
+|--------------------------|-------------------|---------------------------------------------------------------------------------------------------------|--------|---------|
+| Budget required/approved | ts-budget         | Money approved for the resource.                                                                        | TBD    | General |
+| Approver name            | ts-approver       | Person responsible for approving costs related to the resource.                                         | TBD    | General |
+| Service class            | ts-service-class  | Service-level agreement level of the resource.                                                          | TBD    | General |
+| Workload                 | ts-workload       | Name of the workload that the resource supports.                                                        | TBD    | General |
+| Data classification      | ts-data-class     | Sensitivity of data that the resource hosts.                                                            | TBD    | General |
+| Business criticality     | ts-criticality    | Business impact of the resource or supported workload.                                                  | TBD    | General |
+| Business unit            | ts-business-unit  | Top-level division of your company that owns the subscription or workload that the resource belongs to. | TBD    | General |
 
-| `ts-ops-team`   | `cloud-operations`  | Team accountable for day-to-day operations. |
+### 📊 Optional AWS Tags
+| Tag Name                  | Tag Key         | Description                                                     | Values | Scope   |
+|---------------------------|-----------------|-----------------------------------------------------------------|--------|---------|
+| Start date of the project | ts-start-date   | Date when the resource was first deployed.                      | TBD    | General |
+| End date of the project   | ts-end-date     | Date when the resource is scheduled for retirement.             | TBD    | General |
+| Requester                 | ts-requester    | Team or individual who requested the creation of the resource.  | TBD    | General |
 
-| `ts-project`       | `customer-portal`       | Tracks which project the resource belongs to. |
-| `ts-region`      | `uk-south`        | Geographical region where the resource is created. |
-| `ts-service-class`   | `gold`                | Service-level agreement level of the resource. |
-| `ts-provider`   | `aws`                | The cloud or data center provider. |
-| `ts-dc`   | `us-west-1a`              | Specific data center or zone where the resource is created. |
-| `ts-workload`   | `kinetic-saas`              | Name of the workload that the resource supports. |
-
-### 🔍 Operational & Security Tags
-| **Tag Key**          | **Example Value**         | **Purpose** |
-|----------------------|--------------------------|------------|
-| `ts-auto-shutdown`   | `enabled`                | Can be used by automation scripts to turn off resources. |
-| `ts-compliance`      | `soc2`                   | Marks compliance requirements (soc2, hipaa, etc.). |
-| `ts-start-date`   | `10-15-2020`                | Date when the resource was first deployed. |
-| `ts-end-date`   | `10-15-2024`                | Date when the resource is scheduled for retirement. |
-
-### 🔧 Automation & DevOps Tags
-| **Tag Key**         | **Example Value**       | **Purpose** |
-|---------------------|------------------------|------------|
-| `ts-backup`        | `daily`                 | Used for automated backup policies. |
-| `ts-maintenance-window` | `sun-2am`           | Defines when updates should be applied. |
-| `ts-terraform`     | `managed`               | Indicates infrastructure-as-code ownership. |
-
-### 📊 AWS-Specific Cost & Usage Report Tags
-If you're using AWS **Cost Allocation Tags**, AWS requires activation in the **Billing Dashboard**.
-
-| **Tag Key**       | **Example Value**  | **Purpose** |
-|-------------------|-------------------|------------|
-| `ts-approver` | `chris-smith`     | Person responsible for approving costs related to the resource. |
-| `ts-aws-account` | `123456789012`     | Associates resources with an AWS account. |
-| `ts-budget` | `200000`     | Money approved for the resource. |
-| `ts-requester` | `kinetic-dev`     | Team or individual who requested the creation of the resource. |
-| `ts-service`     | `ec2`              | Identifies the AWS service in use. |
+## Applying Multiple Values for AWS Tags
+WIP
 
 ## Tagging Best Practices
 1. **Apply Tags Consistently**: Ensure all resources follow the standardized format.
